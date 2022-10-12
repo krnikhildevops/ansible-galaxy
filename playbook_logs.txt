@@ -1,0 +1,58 @@
+ubuntu@ip-172-31-83-147:~/Ansi-galaxy/roles$ ansible-playbook playbook.yaml 
+
+PLAY [control-node] ***********************************************************************************************
+
+TASK [word : Apache/Mysql/PHP installation] ***********************************************************************
+changed: [control-node] => (item=apache2)
+ok: [control-node] => (item=mariadb-server)
+ok: [control-node] => (item=python3-mysqldb)
+ok: [control-node] => (item=php7.4-mysql)
+ok: [control-node] => (item=php7.4)
+changed: [control-node] => (item=libapache2-mod-php7.4)
+ok: [control-node] => (item=python3-mysqldb)
+
+TASK [word : start apache2] ***************************************************************************************
+changed: [control-node]
+
+TASK [word : restart mariadb] *************************************************************************************
+changed: [control-node]
+
+TASK [word : Install php extensions] ******************************************************************************
+ok: [control-node] => (item=php7.4-gd)
+ok: [control-node] => (item=php7.4-mbstring)
+ok: [control-node] => (item=php7.4-mysqlnd)
+ok: [control-node] => (item=php7.4-mysqli)
+ok: [control-node] => (item=php7.4-curl)
+ok: [control-node] => (item=php7.4-zip)
+ok: [control-node] => (item=php7.4-readline)
+ok: [control-node] => (item=php7.4-tidy)
+
+TASK [word : Database creation] ***********************************************************************************
+ok: [control-node]
+
+TASK [word : Create database user with password and all database privileges and 'WITH GRANT OPTION'] **************
+ok: [control-node]
+
+TASK [word : Download and unzip wordpress] ************************************************************************
+ok: [control-node]
+
+TASK [word : Copy sample config file] *****************************************************************************
+ok: [control-node]
+
+TASK [word : Update Database name] ********************************************************************************
+ok: [control-node]
+
+TASK [word : Update Database user] ********************************************************************************
+ok: [control-node]
+
+TASK [word : Update database user password] ***********************************************************************
+ok: [control-node]
+
+RUNNING HANDLER [word : restart apache] ***************************************************************************
+changed: [control-node]
+
+PLAY RECAP ********************************************************************************************************
+control-node               : ok=12   changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+ubuntu@ip-172-31-83-147:~/Ansi-galaxy/roles$ 
+~
